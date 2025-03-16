@@ -1,0 +1,61 @@
+{
+  "name": "issuepilot",
+  "displayName": "IssuePilot",
+  "description": "AI-powered GitHub issue management tool",
+  "version": "0.1.0",
+  "engines": {
+    "vscode": "^1.70.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [],
+  "main": "./src/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "issuepilot.configureApiKey",
+        "title": "IssuePilot: Configure API Key"
+      },
+      {
+        "command": "issuepilot.generateIssues",
+        "title": "IssuePilot: Generate GitHub Issues"
+      }
+    ],
+    "configuration": {
+      "title": "IssuePilot",
+      "properties": {
+        "issuepilot.githubToken": {
+          "type": "string",
+          "default": "",
+          "description": "GitHub Personal Access Token"
+        },
+        "issuepilot.openaiApiKey": {
+          "type": "string",
+          "default": "",
+          "description": "OpenAI API Key for issue generation"
+        }
+      }
+    }
+  },
+  "scripts": {
+    "lint": "eslint .",
+    "pretest": "npm run lint",
+    "test": "node ./test/runTest.js",
+    "vscode:prepublish": "npm run esbuild-base -- --minify",
+    "esbuild-base": "esbuild ./src/extension.js --bundle --outfile=dist/extension.js --external:vscode --format=cjs --platform=node",
+    "esbuild": "npm run esbuild-base -- --sourcemap",
+    "esbuild-watch": "npm run esbuild-base -- --sourcemap --watch"
+  },
+  "devDependencies": {
+    "@types/glob": "^8.1.0",
+    "@types/node": "^20.11.10",
+    "@types/vscode": "^1.70.0",
+    "eslint": "^8.56.0",
+    "glob": "^8.1.0"
+  },
+  "dependencies": {
+    "axios": "^1.8.3",
+    "esbuild": "^0.25.1"
+  }
+}

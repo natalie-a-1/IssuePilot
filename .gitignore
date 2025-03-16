@@ -1,0 +1,22 @@
+# Dependency directories
+node_modules/
+.venv/
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Distribution / packaging
+dist/
+*.vsix
+
+# Local configuration file
+.vscode-test/
+.vscode-test.mjs
+
+# Temporary files
+temp/
+*.log
+*.tmp
+
+# Environment variables
+.env 
